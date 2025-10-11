@@ -1,19 +1,27 @@
 ---
-export let image: string | undefined = undefined;
-export let title: string = 'Untitled';
-export let description: string = '';
-const altText = title || 'Card image';
+export interface Props {
+    image?: string;
+    title?: string;
+    description?: string;
+}
+
+const { 
+    image: imgProp,
+    title: titleProp, 
+    description: descProp 
+}: Props = Astro.props;
+const altText = titleProp || 'Card image';
 ---
-<div class="bg-white rounded-lg shadow-md overflow-hidden">
-    {image ? (
-        <img src={image} alt={altText} class="w-full h-48 object-cover" />
+<div class="bg-white rounded-lg shadow-md border-4 border-rose-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    {imgProp ? (
+        <img src={imgProp} alt={altText} class="w-full h-100 object-cover hover:scale-105 transition-transform duration-300" />
     ) : (
         <div class="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400">
             {altText}
         </div>
     )}
     <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">{title}</h3>
-        <p class="text-gray-600">{description}</p>
+        <h3 class="text-xl font-semibold mb-2">{titleProp}</h3>
+        <p class="text-gray-600">{descProp}</p>
     </div>
 </div>
