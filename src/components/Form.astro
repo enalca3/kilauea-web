@@ -1,0 +1,32 @@
+---
+export interface Props {
+    id?: string;
+    action?: string;
+    textButton?: string;
+    textSuccess?: string;
+    textError?: string;
+}
+
+const { id = 'contact-form', action = '', textButton = 'Enviar', textSuccess = 'Mensaje enviado con éxito', textError = 'Error al enviar el mensaje' }: Props = Astro.props;
+
+---
+
+
+<form
+    method="POST"
+    id={id}
+    class="flex flex-col gap-4"
+    action={action}>
+    <div class="flex flex-col gap-3">
+        <slot></slot>
+    </div>
+    <div class="my-2">
+        <p id={`${id}-status`} class="text-green-600 hidden">{textSuccess}</p>
+        <p id={`${id}-error`} class="text-red-600 hidden">{textError}</p>
+    </div>
+    <button
+        type="submit"
+        class="bg-rose-400 text-white px-4 py-2 pointer rounded hover:bg-rose-500 transition-colors duration-300 w-fit justify-end self-end">
+        {textButton}
+    </button>
+</form>

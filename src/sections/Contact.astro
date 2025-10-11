@@ -1,0 +1,41 @@
+---
+import Form from '@/components/Form.astro';
+---
+
+<section class="max-w-4xl mx-auto justify-center items-center px-6 py-8 flex-col gap-4 bg-white rounded-md shadow-md mt-20 mb-20">
+    <h2 class="text-3xl font-bold mb-4">Escríbenos y déjate llevar</h2>
+    <Form 
+        action="https://formspree.io/f/mnqylznp"
+        textButton="Enviar"
+        textSuccess="¡Gracias por contactarnos! Te responderemos pronto."
+        textError="Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.">
+        <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            required
+            class="border-2 border-rose-200 rounded-md p-2 focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:outline-none transition-colors"
+        />
+        <input
+            type="email"
+            name="email"
+            placeholder="Correo Electrónico"
+            required
+            class="border-2 border-rose-200 rounded-md p-2 focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:outline-none transition-colors"
+        />
+        <input
+            type="tel"
+            name="phone"
+            placeholder="Teléfono"
+            required
+            class="border-2 border-rose-200 rounded-md p-2 focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:outline-none transition-colors"
+        />
+        <textarea
+            name="message"
+            placeholder="Mensaje"
+            rows="6"
+            required
+            class="border-2 border-rose-200 rounded-md p-2 focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:outline-none transition-colors"
+            ></textarea>
+    </Form>
+</section>
